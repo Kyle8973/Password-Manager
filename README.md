@@ -1,16 +1,16 @@
 # Password Manager
 
-# Description:
+## Description:
 This Is A Web-Based Password Manager Application That Allows Users To Generate, Save, View, And Delete Passwords Securely. The App Encrypts Stored Passwords, Ensuring That Only An Admin Can View The Saved Passwords
 
-# Features:
+## Features:
 
 - **Generate Strong Passwords**: Create Random Passwords With Customisable Length And Character Types (Uppercase, Lowercase, Numbers, Symbols)
 - **Save Passwords**: Save Generated Passwords Along With Website And Username Information
 - **View Passwords**: Admins Can View Saved Passwords After Entering The Admin Password
 - **Delete Passwords**: Remove Saved Passwords From The Database
 
-# Tech Stack:
+## Tech Stack:
 
 - **Frontend**: HTML, CSS, JavaScript
 - **Backend**: Node.js, Express.js
@@ -18,7 +18,7 @@ This Is A Web-Based Password Manager Application That Allows Users To Generate, 
 - **Encryption**: crypto-js
 
 
-# Installation:
+## Installation:
 
 Clone The Repository:
 ```bash
@@ -44,7 +44,7 @@ Run The Application:
 npm start
 ```
 
-# Usage:
+## Usage:
 
 **Generating Passwords:**
 - Set The Desired Password Length.
@@ -61,16 +61,16 @@ npm start
 - A List Of Saved Passwords Will Be Displayed.
 - Use The "Reveal" Button To Show A Password, Or The "Delete" Button To Remove It.
 
-# Screenshots:
+## Screenshots:
 ![Main Page](images/Main_Page.png)
 ![Generated Password](images/Generated_Password.png)
 ![Save Password](images/Save_Password.png)
 ![View Passwords](images/View_Passwords.png)
 
-# License:
+## License:
 This Project Is Licensed Under The MIT License - See The [LICENSE](LICENSE) File For Details
 
-# Authors:
+## Authors:
 
 - [Kyle8973](https://www.github.com/kyle8973)
 
