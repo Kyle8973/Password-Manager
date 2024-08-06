@@ -1,0 +1,214 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Container for centering content */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+h1 {
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+/* Form elements */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Password length input */
+input[type="number"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+/* Checkbox options */
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+/* General input styles */
+input[type="text"], 
+input[type="password"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+/* Password display */
+#generatedPassword {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    background: #e9ecef;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+/* Save form styling */
+#saveForm {
+    display: none;
+    margin-top: 20px;
+}
+
+#saveForm input {
+    margin-bottom: 10px;
+}
+
+/* Password list styling */
+#passwordList {
+    display: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+/* Table headers */
+#passwordTable th {
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Ensure headers do not change color on hover */
+#passwordTable th:hover {
+    background-color: #007bff; /* Same as the default to ensure no change */
+}
+
+/* Table rows */
+#passwordTable tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+/* Change row color on hover */
+#passwordTable tbody tr:hover {
+    background-color: #f1f1f1; /* Light grey color for row hover */
+}
+
+/* Table cells */
+#passwordTable td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Hide elements with the 'hidden' class */
+.hidden {
+    display: none;
+}
+
+/* General button styling */
+button, .nav-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    color: white;
+    background-color: #007BFF; /* Bootstrap primary color */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none; /* Remove underline for links */
+}
+
+button:hover, .nav-button:hover {
+    background-color: #0056b3; /* Darker shade for hover effect */
+}
+
+/* Ensure consistent button heights */
+button, .nav-button {
+    line-height: 1.5; /* Align text vertically */
+}
+
+/* Remove underline from navigation link */
+.nav-button {
+    text-decoration: none;
+}
+
+/* Reveal button styling */
+.reveal-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    color: white;
+    background-color: #007BFF; /* Bootstrap primary color */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none; /* Remove underline for links */
+}
+
+.reveal-btn:hover {
+    background-color: #0056b3; /* Darker shade for hover effect */
+}
+/* Error message styling */
+.error-message {
+    color: red;
+    font-size: 14px;
+    font-weight: bold;
+    display: none; /* Hide by default */
+}
+.delete-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    color: white;
+    background-color: red; /* Bootstrap primary color */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none; /* Remove underline for links */
+}

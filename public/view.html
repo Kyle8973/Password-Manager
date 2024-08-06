@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>View Saved Passwords</title>
+</head>
+<body>
+    <div class="container">
+        <h1>View Saved Passwords</h1>
+        <!-- Admin password form -->
+        <form id="adminForm">
+            <label for="adminPassword">Enter Admin Password:</label>
+            <input type="password" id="adminPassword" placeholder="Admin Password" required>
+            <span id="adminPasswordError" class="error-message"></span> <!-- Error message element -->
+            <button id="viewBtn" type="button">View Passwords</button>
+        </form>
+        <!-- Password list -->
+        <div id="passwordList" style="display: none;">
+            <table id="passwordTable">
+                <thead>
+                    <tr>
+                        <th>Website:</th>
+                        <th>Username:</th>
+                        <th>Password:</th>
+                        <th>Actions:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows Are Inserted Dynamically -->
+                </tbody>
+            </table>
+        </div>
+        <!-- Navigation Button -->
+        <br>
+        <a href="/" class="nav-button">Back To The Password Generator</a>
+    </div>
+    <script src="backend.js"></script>
+</body>
+</html>
