@@ -27,6 +27,7 @@
     "escape-html": "^1.0.3",
     "etag": "^1.8.1",
     "express": "^4.19.2",
+    "express-rate-limit": "^7.4.0",
     "finalhandler": "^1.2.0",
     "forwarded": "^0.2.0",
     "fresh": "^0.5.2",

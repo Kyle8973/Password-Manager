@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const saveForm = document.getElementById('saveForm');
     const websiteInput = document.getElementById('website');
     const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
     const submitBtn = document.getElementById('submitBtn');
     const characterTypeError = document.getElementById('characterTypeError');
     const formError = document.getElementById('formError');
@@ -67,6 +68,11 @@ document.addEventListener('DOMContentLoaded', function () {
             const password = generatePassword();
             if (password) {
                 generatedPasswordDiv.textContent = password;
+                
+                // Prefill password field for saving
+                if (passwordInput) {
+                    passwordInput.value = password;
+                }
 
                 // Show Save Button
                 if (savePasswordBtn) {
@@ -93,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
         submitBtn.addEventListener('click', async function () {
             const website = websiteInput.value;
             const username = usernameInput.value;
-            const password = generatedPasswordDiv.textContent;
+            const password = passwordInput.value; // Changed to get password from the input field
 
             if (!website || !username || !password) {
                 formError.textContent = 'Error: Please Fill In All Fields'; // Show Error Message
