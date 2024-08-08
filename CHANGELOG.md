@@ -8,8 +8,6 @@
     - `RATE_LIMIT_WINDOW_MINUTES`: Time Window In Minutes For The Rate Limit (Default: 5)
   - Custom Handler To Display A User-Friendly Message With The Exact Time Before Another Request Can Be Made
 
-**Full Changelog**: https://github.com/Kyle8973/Password-Manager/commits/v3.0.0?since=2024-08-08&until=2024-08-08
-
 # Version 2.0.0 [Security Update] - `August 7th 2024`
 
 ### Changed:
@@ -41,8 +39,6 @@
 - The `.env` File No Longer Needs To Include Admin Password And Secret Key.
 - This Update Enhances Security By Managing Sensitive Information Directly In The Database And Improves User Experience With Prefilled Password Fields.
 
-**Full Changelog:** https://github.com/Kyle8973/Password-Manager/commits/v2.0.0?since=2024-08-07&until=2024-08-07
-
 # Version 1.0.0 [Initial Release] - `August 6th 2024`
 
 ### Added:
@@ -66,5 +62,3 @@
 - **Basic User Interface:**
   - HTML And JavaScript For Generating, Saving, And Viewing Passwords
   - Initial Form And UI Components For User Interactions
-
-**Full Changelog**: https://github.com/Kyle8973/Password-Manager/commits/v1.0.0?since=2024-08-06&until=2024-08-06
