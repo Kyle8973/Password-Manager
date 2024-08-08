@@ -87,6 +87,9 @@ If You Have Already Set An Admin Password And Wish To Reset It, Run `node setup.
 ## License:
 This Project Is Licensed Under The MIT License - See The [LICENSE](LICENSE) File For Details
 
+## Changelog:
+See The [Change Log](CHANGELOG.md) File For Details
+
 ## Authors:
 
 - [Kyle8973](https://www.github.com/kyle8973)
