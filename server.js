@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const crypto = require('crypto-js');
+const rateLimit = require('express-rate-limit');
 
 // Initialise Express
 const app = express();
@@ -14,6 +15,20 @@ mongoose.connect(process.env.MONGODB_URL);
 
 // Password Model
 const Password = require('./models/Password');
+
+// Rate Limiter Middleware
+const loginLimiter = rateLimit({
+  windowMs: (parseInt(process.env.RATE_LIMIT_WINDOW_MINUTES, 10) || 5) * 60 * 1000, // Default 5 Minutes
+  max: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS, 10) || 5, // Default 5 Requests
+  handler: (req, res) => {
+    const retryAfterMs = req.rateLimit.resetTime - Date.now();
+    const retryAfterMinutes = Math.floor(retryAfterMs / 60000);
+    const retryAfterSeconds = Math.floor((retryAfterMs % 60000) / 1000);
+    res.status(429).json({
+      message: `Too Many Login Attempts, Please Try Again In ${retryAfterMinutes} Minutes And ${retryAfterSeconds} Seconds`
+    });
+  }
+});
 
 // Function To Check If The Admin Password Is Set
 async function checkAdminPassword() {
@@ -66,8 +81,8 @@ async function startServer() {
     }
   });
 
-  // API Route To View Passwords
-  app.post('/view-passwords', async (req, res) => {
+  // API Route To View Passwords (With Rate Limiting)
+  app.post('/view-passwords', loginLimiter, async (req, res) => {
     try {
       const { adminPassword } = req.body;
 
@@ -106,7 +121,7 @@ async function startServer() {
     }
   });
 
-  // API route to delete a password
+  // API route To Delete A Password
   app.delete('/delete-password/:id', async (req, res) => {
     const { id } = req.params;
 
@@ -119,7 +134,7 @@ async function startServer() {
       }
     } catch (error) {
       console.error('Error Deleting Password:', error);
-      res.status(500).json({ message: 'An Error Occured Whilst Deleting The Password, Check The Console For More Information' });
+      res.status(500).json({ message: 'An Error Occurred Whilst Deleting The Password, Check The Console For More Information' });
     }
   });
 

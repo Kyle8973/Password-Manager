@@ -5,6 +5,7 @@ This Is A Web-Based Password Manager Application That Allows Users To Generate, 
 
 ## Features:
 - **User-Generated Admin Password:** Create An Admin Password Of Your Choice During The Initital Setup That Is Encrypted And Stored Securely In The Database
+- **Rate Limits:** Prevent Brute-Force Attacks By Limiting The Number Of Admin Password Login Requests In A Set Interval (Default 5 Attempts Within A 5 Minute Window, Configurable)
 - **Generate Strong Passwords**: Create Random Passwords With Customisable Length And Character Types (Uppercase, Lowercase, Numbers, Symbols)
 - **Save Passwords**: Save Generated Passwords Along With Website And Username Information
 - **View Passwords**: Admins Can View Saved Passwords After Entering The Admin Password
@@ -35,6 +36,8 @@ Create A .env File And Add The Following:
 ```bash
 PORT=3000 # Port The Server Will Run On
 MONGODB_URL= # MongoDB URL
+RATE_LIMIT_WINDOW_MINUTES=5 # Rate Limit Window In Minutes
+RATE_LIMIT_MAX_REQUESTS=5 # Maximum Number Of Requests Allowed In The Rate Limit Window
 ```
 
 Run The Server Setup:
