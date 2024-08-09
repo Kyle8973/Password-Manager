@@ -9,15 +9,29 @@
 <body>
     <div class="container">
         <h1>View Saved Passwords</h1>
-        <!-- Admin password form -->
+        
+        <!-- Dark Mode Toggle -->
+        <label for="darkModeToggle">
+            <input type="checkbox" id="darkModeToggle">
+            Dark Mode
+        </label>
+        <br>
+        
+        <!-- Admin Password Form -->
         <form id="adminForm">
             <label for="adminPassword">Enter Admin Password:</label>
             <input type="password" id="adminPassword" placeholder="Admin Password" required>
-            <span id="adminPasswordError" class="error-message"></span> <!-- Error message element -->
-            <button id="viewBtn" type="button">View Passwords</button>
+            <span id="adminPasswordError" class="error-message"></span>
+            <button id="viewBtn" type="submit">View Passwords</button>
         </form>
-        <!-- Password list -->
+        
+        <!-- Password List and Filter -->
         <div id="passwordList" style="display: none;">
+            <!-- Filter by Website -->
+            <div id="filterContainer" style="display: none;">
+                <label for="filterWebsite">Filter By Website:</label>
+                <input type="text" id="filterWebsite" placeholder="Website:">
+            </div>
             <table id="passwordTable">
                 <thead>
                     <tr>
@@ -28,10 +42,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Rows Are Inserted Dynamically -->
+                    <!-- Example Row -->
+                    <tr>
+                        <td>ExampleSite.com</td>
+                        <td>user123</td>
+                        <td>******</td>
+                        <td>
+                            <div class="button-group">
+                                <button class="reveal-btn">Reveal</button>
+                                <button class="delete-btn">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- More rows will be inserted dynamically -->
                 </tbody>
             </table>
         </div>
+        
         <!-- Navigation Button -->
         <br>
         <a href="/" class="nav-button">Back To The Password Generator</a>

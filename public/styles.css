@@ -1,3 +1,5 @@
+/* Normalize.css can be included to address cross-browser inconsistencies */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
 /* Basic reset */
 * {
     margin: 0;
@@ -12,6 +14,7 @@ body {
     color: #333;
     line-height: 1.6;
     padding: 20px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 /* Container for centering content */
@@ -22,6 +25,7 @@ body {
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
 /* Headings */
@@ -104,6 +108,7 @@ input[type="password"] {
     display: none;
 }
 
+/* Table styling */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -117,11 +122,7 @@ table {
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid #ddd;
-}
-
-/* Ensure headers do not change color on hover */
-#passwordTable th:hover {
-    background-color: #007bff; /* Same as the default to ensure no change */
+    transition: background-color 0.3s ease;
 }
 
 /* Table rows */
@@ -158,20 +159,22 @@ button, .nav-button {
     display: inline-block;
     text-align: center;
     text-decoration: none; /* Remove underline for links */
+    margin-bottom: 10px; /* Add space between buttons */
 }
 
+/* Remove underline from navigation link specifically */
+.nav-button {
+    text-decoration: none; /* Ensure no underline for .nav-button */
+}
+
+/* Hover effect for buttons */
 button:hover, .nav-button:hover {
-    background-color: #0056b3; /* Darker shade for hover effect */
+    background-color: #0056b3; /* Darker shade for hover effect in light mode */
 }
 
 /* Ensure consistent button heights */
 button, .nav-button {
     line-height: 1.5; /* Align text vertically */
-}
-
-/* Remove underline from navigation link */
-.nav-button {
-    text-decoration: none;
 }
 
 /* Reveal button styling */
@@ -189,9 +192,11 @@ button, .nav-button {
     text-decoration: none; /* Remove underline for links */
 }
 
+/* Hover effect for reveal button */
 .reveal-btn:hover {
-    background-color: #0056b3; /* Darker shade for hover effect */
+    background-color: #0056b3; /* Darker shade for hover effect in light mode */
 }
+
 /* Error message styling */
 .error-message {
     color: red;
@@ -199,16 +204,186 @@ button, .nav-button {
     font-weight: bold;
     display: none; /* Hide by default */
 }
+
+/* Delete button styling */
 .delete-btn {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     color: white;
-    background-color: red; /* Bootstrap primary color */
+    background-color: red; /* Delete button color */
     cursor: pointer;
     transition: background-color 0.3s ease;
     display: inline-block;
     text-align: center;
     text-decoration: none; /* Remove underline for links */
+}
+
+/* Hover effect for delete button */
+.delete-btn:hover {
+    background-color: #a10e0e; /* Darker shade for hover effect */
+}
+
+/* Hide filterWrapper initially */
+#filterWrapper {
+    display: none; /* Hidden by default */
+    align-items: center; /* Align items if necessary */
+    gap: 10px; /* Space between text and input */
+}
+
+/* Styling for filterWrapper when visible */
+#filterWrapper.show {
+    display: flex; /* Or inline-flex, depending on layout */
+}
+
+#filterWebsite {
+    flex-grow: 1; /* Allows the input to take available space */
+}
+
+/* Specific styling for the 'Saved Passwords' button */
+.saved-passwords {
+    text-decoration: none; /* Ensure no underline */
+    border: none; /* Ensure no border (if needed) */
+}
+
+/* Dark mode styling */
+[data-theme="dark"] body {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .container {
+    background: #1e1e1e;
+    border: 1px solid #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] h1 {
+    color: #EB459E;
+}
+
+[data-theme="dark"] #generatedPassword {
+    background: #333;
+    border: 1px solid #444;
+}
+
+[data-theme="dark"] #passwordTable th {
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+/* Ensure headers do not change color on hover in dark mode */
+[data-theme="dark"] #passwordTable th {
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] #passwordTable th:hover {
+    background-color: #333; /* Keep the same background color on hover */
+    color: #e0e0e0; /* Keep the same text color on hover */
+}
+
+[data-theme="dark"] #passwordTable tbody tr:hover {
+    background-color: #2C2F33; /* Dark grey color for row hover */
+}
+
+[data-theme="dark"] button, [data-theme="dark"] .nav-button {
+    background-color: #EB459E; /* Button color in dark mode */
+    text-decoration: none; /* Remove underline for links */
+    margin-bottom: 10px; /* Add space between buttons */
+}
+
+[data-theme="dark"] button:hover, [data-theme="dark"] .nav-button:hover {
+    background-color: #a71c66; /* Darker shade for hover effect in dark mode */
+}
+
+[data-theme="dark"] input[type="checkbox"] {
+    accent-color: #EB459E; /* Accent color for checkboxes in dark mode */
+}
+
+[data-theme="dark"] .delete-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    color: white;
+    background-color: red; /* Delete button color */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none; /* Remove underline for links */
+}
+
+[data-theme="dark"] .delete-btn:hover {
+    background-color: #a10e0e; /* Darker shade for hover effect */
+}
+
+[data-theme="dark"] .reveal-btn:hover {
+    background-color: #951f5e; /* Darker shade for hover effect */
+}
+
+/* Responsive adjustments for mobile devices */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px; /* Reduced padding on small screens */
+        width: 100%; /* Full width on mobile */
+        max-width: none; /* Remove max-width constraint */
+    }
+
+    /* Stack the buttons vertically on mobile */
+    .button-group {
+        display: flex;
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 10px; /* Space between buttons */
+        width: 100%; /* Ensure full width */
+    }
+
+    .button-group button {
+        width: 100%; /* Full width for each button */
+    }
+
+    /* Make table scrollable horizontally */
+    table {
+        width: 100%;
+        overflow-x: auto;
+        display: block;
+    }
+
+    /* Ensure table headers and cells span full width */
+    #passwordTable {
+        width: 100%;
+    }
+
+    /* Prevent text wrapping in table headers and cells */
+    #passwordTable th, #passwordTable td {
+        white-space: nowrap;
+    }
+}
+
+/* Landscape mode adjustments for phones */
+@media (orientation: landscape) and (max-width: 768px) {
+    .container {
+        padding: 10px;
+        width: 100%;
+        max-width: none;
+    }
+
+    /* Make sure the table still takes full width and is scrollable */
+    table {
+        width: 100%;
+        overflow-x: auto;
+        display: block;
+    }
+
+    /* Ensure table headers and cells span full width */
+    #passwordTable {
+        width: 100%;
+    }
+
+    /* Prevent text wrapping in table headers and cells */
+    #passwordTable th, #passwordTable td {
+        white-space: nowrap;
+    }
 }

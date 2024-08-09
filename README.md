@@ -6,17 +6,18 @@ This Is A Web-Based Password Manager Application That Allows Users To Generate, 
 ## Features:
 - **User-Generated Admin Password:** Create An Admin Password Of Your Choice During The Initital Setup That Is Encrypted And Stored Securely In The Database
 - **Rate Limits:** Prevent Brute-Force Attacks By Limiting The Number Of Admin Password Login Requests In A Set Interval (Default 5 Attempts Within A 5 Minute Window, Configurable)
-- **Generate Strong Passwords**: Create Random Passwords With Customisable Length And Character Types (Uppercase, Lowercase, Numbers, Symbols)
-- **Save Passwords**: Save Generated Passwords Along With Website And Username Information
-- **View Passwords**: Admins Can View Saved Passwords After Entering The Admin Password
-- **Delete Passwords**: Remove Saved Passwords From The Database
+- **Generate Strong Passwords:** Create Random Passwords With Customisable Length And Character Types (Uppercase, Lowercase, Numbers, Symbols)
+- **Save Passwords:** Save Generated Passwords Along With Website And Username Information
+- **View Passwords:** Admins Can View Saved Passwords After Entering The Admin Password
+- **Delete Passwords:** Remove Saved Passwords From The Database
+- **Dark Mode:** Dark Mode Functionality With Toggle
 
 ## Tech Stack:
 
-- **Frontend**: HTML, CSS, JavaScript
-- **Backend**: Node.js, Express.js
-- **Database**: MongoDB
-- **Encryption**: crypto-js
+- **Frontend:** HTML, CSS, JavaScript
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB
+- **Encryption:** crypto-js
 
 
 ## Installation:
@@ -73,6 +74,7 @@ npm start
 ![Generated Password](images/Generated_Password.png)
 ![Save Password](images/Save_Password.png)
 ![View Passwords](images/View_Passwords.png)
+![Dark Mode](images/Dark_Mode.png)
 
 ## FAQs:
 #### How Do I Set An Admin Password?
@@ -86,9 +88,6 @@ If You Have Already Set An Admin Password And Wish To Reset It, Run `node setup.
 
 ## License:
 This Project Is Licensed Under The MIT License - See The [LICENSE](LICENSE) File For Details
-
-## Changelog:
-See The [Change Log](CHANGELOG.md) File For Details
 
 ## Authors:
 

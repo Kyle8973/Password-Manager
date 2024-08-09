@@ -1,3 +1,31 @@
+# Version 4.0.0 [Dark Mode & Mobile Responsiveness] - `August 9th 2024`
+
+### Added:
+- **Dark Mode**: Implemented Dark Mode Styling
+  - Background Colour And Text Colour Adjustments For Dark Mode
+  - Updated Button And Table Header Colours For Dark Mode
+
+### Fixed:
+- **Mobile Responsiveness**: Improved Responsiveness For Various Screen Sizes
+  - Adjusted Container Padding And Width For Mobile Devices
+  - Ensured Table Scrolls Horizontally On Small Screens
+ 
+### Updated:
+- **Password Display Section**: Enhanced The Styling And Visibility Of The Generated Password Display
+  - Updated Background And Border Colour For Better Visibility In Both Light And Dark Modes
+
+- **Search Filter**: Added A Search Filter To The Password View Section
+  - Included Styling Adjustments For Filter Wrapper Visibility And Alignment
+
+- **Error Messages**: Improved Visibility And Styling Of Error Messages
+  - Made Error Messages More Prominent With Updated Styling
+
+- **Button Styles**: Unified Button Styles And Ensured Consistent Appearance Across Different States
+  - Updated Hover Styles For Different Buttons To Ensure Proper Visual Feedback
+
+- **Table Styling**: Refined Table Styling To Improve Readability
+  - Ensured Consistent Header And Row Colours, With Appropriate Hover Effects
+
 # Version 3.0.0 [Rate Limits] - `August 8th 2024`
 
 ### Added:

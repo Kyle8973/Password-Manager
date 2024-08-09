@@ -3,7 +3,6 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const crypto = require('crypto-js');
-const rateLimit = require('express-rate-limit');
 
 // Initialise Express
 const app = express();
@@ -11,24 +10,42 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGODB_URL);
+mongoose.connect(process.env.MONGODB_URL)
+  .then(() => console.log('Connected To MongoDB'))
+  .catch(error => console.error('Error Connecting To MongoDB:', error));
 
 // Password Model
 const Password = require('./models/Password');
 
-// Rate Limiter Middleware
-const loginLimiter = rateLimit({
-  windowMs: (parseInt(process.env.RATE_LIMIT_WINDOW_MINUTES, 10) || 5) * 60 * 1000, // Default 5 Minutes
-  max: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS, 10) || 5, // Default 5 Requests
-  handler: (req, res) => {
-    const retryAfterMs = req.rateLimit.resetTime - Date.now();
-    const retryAfterMinutes = Math.floor(retryAfterMs / 60000);
-    const retryAfterSeconds = Math.floor((retryAfterMs % 60000) / 1000);
-    res.status(429).json({
-      message: `Too Many Login Attempts, Please Try Again In ${retryAfterMinutes} Minutes And ${retryAfterSeconds} Seconds`
-    });
+// Rate limiter Map To Track Attempts By IP
+const loginAttempts = new Map();
+
+// Rate Limiter Settings
+const RATE_LIMIT_WINDOW_MS = (parseInt(process.env.RATE_LIMIT_WINDOW_MINUTES, 10) || 5) * 60 * 1000; // Default 5 Minutes
+const MAX_ATTEMPTS = parseInt(process.env.RATE_LIMIT_MAX_REQUESTS, 10) || 5; // Default 5 Requests
+
+// Function To Check If An IP Should Be Rate Limited
+function isRateLimited(ip) {
+  const attempts = loginAttempts.get(ip) || { count: 0, time: Date.now() };
+  const currentTime = Date.now();
+
+  if (currentTime - attempts.time > RATE_LIMIT_WINDOW_MS) {
+    // Reset Attempts If Window Has Passed
+    loginAttempts.set(ip, { count: 0, time: currentTime });
+    return { limited: false };
   }
-});
+
+  const timeLeftMs = RATE_LIMIT_WINDOW_MS - (currentTime - attempts.time);
+  return { limited: attempts.count >= MAX_ATTEMPTS, timeLeftMs };
+}
+
+// Function To Increment Login Attempts
+function incrementAttempts(ip) {
+  const attempts = loginAttempts.get(ip) || { count: 0, time: Date.now() };
+  attempts.count += 1;
+  attempts.time = Date.now();
+  loginAttempts.set(ip, attempts);
+}
 
 // Function To Check If The Admin Password Is Set
 async function checkAdminPassword() {
@@ -36,7 +53,7 @@ async function checkAdminPassword() {
     const adminRecord = await Password.findOne({ admin: true });
     return !!adminRecord;
   } catch (error) {
-    console.error('Error checking admin password:', error);
+    console.error('Error Checking The Admin Password:', error);
     return false;
   }
 }
@@ -81,10 +98,21 @@ async function startServer() {
     }
   });
 
-  // API Route To View Passwords (With Rate Limiting)
-  app.post('/view-passwords', loginLimiter, async (req, res) => {
+  // API Route To View Passwords (With Custom Rate Limiting)
+  app.post('/view-passwords', async (req, res) => {
     try {
       const { adminPassword } = req.body;
+      const ip = req.ip;
+
+      // Check if the IP is rate limited
+      const { limited, timeLeftMs } = isRateLimited(ip);
+      if (limited) {
+        const retryAfterMinutes = Math.floor(timeLeftMs / 60000);
+        const retryAfterSeconds = Math.floor((timeLeftMs % 60000) / 1000);
+        return res.status(429).json({
+          message: `Too Many Login Attempts, Please Try Again In ${retryAfterMinutes} Minutes And ${retryAfterSeconds} Seconds`
+        });
+      }
 
       // Retrieve And Verify The Admin Password
       const adminRecord = await Password.findOne({ admin: true });
@@ -111,9 +139,10 @@ async function startServer() {
             password: decryptedPassword
           };
         });
-        res.json(decryptedPasswords);
+        res.json({ passwords: decryptedPasswords, success: true });
       } else {
-        res.status(403).json({ message: 'Invalid Admin Password, Please Try Again' });
+        incrementAttempts(ip); // Increment attempts on failure
+        res.status(403).json({ message: 'Invalid Admin Password, Please Try Again', success: false });
       }
     } catch (error) {
       console.error('Error Retrieving Passwords:', error);
@@ -136,6 +165,12 @@ async function startServer() {
       console.error('Error Deleting Password:', error);
       res.status(500).json({ message: 'An Error Occurred Whilst Deleting The Password, Check The Console For More Information' });
     }
+  });
+
+  // New API Route To Get Authentication Expiration Time
+  app.get('/auth-expiry', (req, res) => {
+    const authExpireTime = process.env.AUTH_EXPIRE_TIME || 1800000; // Default to 30 minutes if not set
+    res.json({ authExpireTime });
   });
 
   const PORT = process.env.PORT || 3000;

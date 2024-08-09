@@ -10,6 +10,12 @@
     <div class="container">
         <h1>Kyle's Password Generator</h1>
         <div id="generator">
+            <!-- Dark Mode Toggle -->
+            <label for="darkModeToggle">
+                <input type="checkbox" id="darkModeToggle">
+                Dark Mode
+            </label>
+            <br>
             <label for="length">Password Length:</label>
             <input type="number" id="length" value="12" min="12" max="24">
 
@@ -25,6 +31,11 @@
             <br>
             <div id="generatedPassword"></div>
 
+            <!-- Password Strength Indicator -->
+            <div id="passwordStrengthContainer" style="display: none;">
+                <p id="passwordStrength"></p>
+            </div>
+
             <!-- Error Message For Character Type Selection -->
             <span id="characterTypeError" class="error-message"></span>
             
@@ -36,7 +47,6 @@
                 <button id="submitBtn">Submit</button>
                 <span id="formError" class="error-message hidden">Please Fill In All Fields</span>
             </div>
-            
             <a href="view.html">
                 <button id="viewPasswordsBtn">View Saved Passwords</button>
             </a>
