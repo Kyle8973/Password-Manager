@@ -167,12 +167,6 @@ async function startServer() {
     }
   });
 
-  // New API Route To Get Authentication Expiration Time
-  app.get('/auth-expiry', (req, res) => {
-    const authExpireTime = process.env.AUTH_EXPIRE_TIME || 1800000; // Default to 30 minutes if not set
-    res.json({ authExpireTime });
-  });
-
   const PORT = process.env.PORT || 3000;
   app.listen(PORT, () => console.log(`Server Running On Port ${PORT}\nGitHub: https://github.com/Kyle8973/Password-Manager`));
 }
