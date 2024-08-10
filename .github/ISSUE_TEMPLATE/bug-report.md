@@ -2,7 +2,7 @@
 name: Bug Report
 about: Report A Bug
 title: "[BUG]"
-labels: ''
+labels: Bug
 assignees: Kyle8973
 
 ---
