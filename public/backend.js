@@ -84,9 +84,16 @@ document.addEventListener('DOMContentLoaded', function () {
             characterTypeError.style.display = 'block';
             return '';
         }
-
+        
         characterTypeError.textContent = ''; // Clear Error Message
         characterTypeError.style.display = 'none';
+
+        if (length < 12 || length > 24) {
+            // Show Error Message If Password Length Is Invalid
+            characterTypeError.textContent = 'Password Length Must Be Between 12 And 24 Characters';
+            characterTypeError.style.display = 'block';
+            return '';
+        }
 
         let password = '';
         for (let i = 0; i < length; i++) {
