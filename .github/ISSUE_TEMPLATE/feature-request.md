@@ -1,7 +1,7 @@
 ---
 name: Feature Request
 about: Suggest An Idea
-title: "[Feature Request]"
+title: ''
 labels: Enhancement
 assignees: Kyle8973
 
