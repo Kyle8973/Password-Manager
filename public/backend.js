@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function () {
     // Elements For Generating Passwords
     const lengthInput = document.getElementById('length');

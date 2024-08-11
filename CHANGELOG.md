@@ -1,3 +1,21 @@
+# Version 5.0.0 [Audit Logs] - `August 11th 2024`
+
+### Added:
+
+- **Audit Log Model Creation:**
+  - **Model Definition:** Added A New `AuditLog` Model To The Application For Tracking Significant Events Related To Security And Administrative Actions. This Model Captures Details Such As Action Type, Event Description, And The IP Address Of The Requester
+  - **Schema Design:** The `AuditLog` Schema Includes Fields For `action` (Type Of Event), `details` (Description Of The Event), And `ip` (IP Address From Which The Request Originated) This Design Facilitates Detailed Record-Keeping And Auditing
+
+- **Tracking Security Events:**
+  - **Event Logging:** Implemented Logging For Various Security-Related Events, Including Successful And Failed Login Attempts, Password Saves, And Password Deletions. Each Event Is Recorded With Relevant Details And The Requester's IP Address
+  - **Rate Limiting Events:** Added Specific Logging For Rate-Limited Actions To Track When And Why Requests Are Denied Due To Excessive Login Attempts
+
+- **Coloured Console Text:**
+  - **Enhanced Output:** Utilised The `chalk` Library To Colour-Code Console Outputs For Better Readability And Quick Identification Of Different Types Of Messages
+    - **Green Text:** Used For Successful Operations, Such As Successful Database Connections And Successful Actions
+    - **Red Text:** Applied To Error Messages To Clearly Indicate Issues That Require Attention
+    - **Yellow Text:** Employed For Audit Log Information
+
 # Version 4.0.0 [Dark Mode & Mobile Responsiveness] - `August 9th 2024`
 
 ### Added:
