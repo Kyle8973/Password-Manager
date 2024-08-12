@@ -86,6 +86,9 @@ Run `npm start`
 #### How Do I Reset My Admin Password?
 If You Have Already Set An Admin Password And Wish To Reset It, Run `node setup.js` And Follow The Instructions In The Console
 
+## Contributing:
+See The [Contributing Guidelines](CONTRIBUTING.md) For Details
+
 ## Change Log:
 See The [Change Log](CHANGELOG.md) File For Details
 
