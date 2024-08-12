@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>View Saved Passwords</title>
+    <script>
+    // Apply Chosen Theme
+    (function () {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        } else {
+            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.setAttribute('data-theme', prefersDarkScheme ? 'dark' : 'light');
+        }
+    })();
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>View Saved Passwords</h1>
+        
+        <!-- Dark Mode Toggle -->
+        <label for="darkModeToggle">
+            <input type="checkbox" id="darkModeToggle">
+            Dark Mode
+        </label>
+        <br>
+        
+        <!-- Admin Password Form -->
+        <form id="adminForm">
+            <label for="adminPassword">Enter Admin Password:</label>
+            <input type="password" id="adminPassword" placeholder="Admin Password" required>
+            <span id="adminPasswordError" class="error-message"></span>
+            <button id="viewBtn" type="submit">View Passwords</button>
+        </form>
+        
+        <!-- Password List and Filter -->
+        <div id="passwordList" style="display: none;">
+            <!-- Filter By Website -->
+            <div id="filterContainer" style="display: none;">
+                <label for="filterWebsite">Filter By Website:</label>
+                <input type="text" id="filterWebsite" placeholder="Website:">
+            </div>
+            <table id="passwordTable">
+                <thead>
+                    <tr>
+                        <th>Website:</th>
+                        <th>Username:</th>
+                        <th>Password:</th>
+                        <th>Actions:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        </td>
+                    </tr>
+                    <!-- Rows Will Be Inserted Dynamically -->
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Navigation Button -->
+        <br>
+        <a href="/" class="nav-button">Back To The Password Generator</a>
+    </div>
+    <script src="backend.js"></script>
+</body>
+</html>

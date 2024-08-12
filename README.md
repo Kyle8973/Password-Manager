@@ -11,7 +11,6 @@ This Is A Web-Based Password Manager Application That Allows Users To Generate, 
 - **View Passwords:** Admins Can View Saved Passwords After Entering The Admin Password
 - **Delete Passwords:** Remove Saved Passwords From The Database
 - **Dark Mode:** Dark Mode Functionality With Toggle
-- **Audit Logs:** Track Security Events Through The Console And Database
 
 ## Tech Stack:
 

@@ -1,0 +1,16 @@
+To-Do:
+Fix white flash when loading dark mode
+
+Encryption at Rest: Ensure that all sensitive data is encrypted when stored in the database, not just during transmission.
+
+Password Strength Indicator: Add a feature to assess and display the strength of generated passwords and provide feedback to users.
+
+Password Categories: Allow users to organize passwords into categories or folders for better management.
+
+In Progress:
+Mobile Responsiveness
+
+Done:
+Search and Filter: Add search and filter options to easily find and manage saved passwords.
+
+Prevent Values Less 12 More 24 Passwords
